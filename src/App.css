@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+  background-color: #0D54A4;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Source Sans 3';
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: absolute;
+  left: 86px;
+  top: 100px;
+}
+
+.background {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-image: url('./assets/background.svg');
+  width: 1127px;
+  height: 759px; 
+  z-index: 0;
+}
+
+.cards {
+  min-width: 480px;
+  height: 335px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 31px;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 34px;
+  max-width: 418px;
+}
+
+.small-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dots {
+  width: 6px;
+  height: 6px;
+}
+
+.big-content {
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 30px;
+}

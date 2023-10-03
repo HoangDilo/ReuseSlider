@@ -1,0 +1,18 @@
+.slide-container {
+    display: flex;
+    gap: 36px;
+    height: 335px;
+    overflow: visible;
+    width: 1354px;
+}
+
+.imgs {
+    width: 480px;
+    height: 335px;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+
