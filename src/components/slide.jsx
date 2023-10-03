@@ -5,7 +5,7 @@ import { Children } from "react";
 function Slide({ position, cb, time, children }) {
 
     //console.log(children);
-    
+
     const style = {
         transform: `translateX(${position}px)`,
         transition: `transform ${time}s`
@@ -15,13 +15,10 @@ function Slide({ position, cb, time, children }) {
 
     return (
         <div className="slide-container" style={style} onTransitionEnd={cb}>
-            {
-                Children.map(children, child =>
-                    <>
-                        {child}
-                    </>
-                )
-            }
+            {/*children[2]*/}
+            {children.slice(-4)}
+            {children}
+            {children.slice(0, 4)}
         </div>
     )
 }

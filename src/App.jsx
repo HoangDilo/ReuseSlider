@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './App.css'
 import Title from './components/title'
 import Slide from './components/slide'
@@ -14,77 +14,159 @@ function App() {
   const [time, setTime] = useState(1);
   const [st, setSt] = useState(false);
 
+  // let refs = useRef([]);
+
   const list_cards = [
     {
       id: 1,
       img_src: img_1,
-      category: 'Ngành',
+      category: '1',
       date: '1 Mar 2023',
-      title: 'TOP useful office software for programmers.'
+      title: '1 TOP useful office software for programmers.'
     },
     {
       id: 2,
       img_src: img_2,
-      category: 'Ngành',
+      category: '2',
       date: '1 Mar 2023',
-      title: 'TOP useful office software for programmers.'
+      title: '2 TOP useful office software for programmers.'
     },
     {
       id: 3,
       img_src: img_3,
-      category: 'Ngành',
+      category: '3',
       date: '1 Mar 2023',
-      title: 'TOP useful office software for programmers.'
-    }
+      title: '3 TOP useful office software for programmers.'
+    },
+    {
+      id: 4,
+      img_src: img_1,
+      category: '4',
+      date: '1 Mar 2023',
+      title: '4 TOP useful office software for programmers.'
+    },
+    {
+      id: 5,
+      img_src: img_2,
+      category: '5',
+      date: '1 Mar 2023',
+      title: '5 TOP useful office software for programmers.'
+    },
+    {
+      id: 6,
+      img_src: img_3,
+      category: '6',
+      date: '1 Mar 2023',
+      title: '6 TOP useful office software for programmers.'
+    },
+    {
+      id: 7,
+      img_src: img_1,
+      category: '7',
+      date: '1 Mar 2023',
+      title: '7 TOP useful office software for programmers.'
+    },
+    {
+      id: 8,
+      img_src: img_2,
+      category: '8',
+      date: '1 Mar 2023',
+      title: '8 TOP useful office software for programmers.'
+    },
+    {
+      id: 9,
+      img_src: img_3,
+      category: '9',
+      date: '1 Mar 2023',
+      title: '9 TOP useful office software for programmers.'
+    },
+    
+    //Try changing the length of the array to see the result
+
+    // {
+    //   id: 10,
+    //   img_src: img_1,
+    //   category: '10',
+    //   date: '1 Mar 2023',
+    //   title: '10 TOP useful office software for programmers.'
+    // },
+    // {
+    //   id: 11,
+    //   img_src: img_2,
+    //   category: '11',
+    //   date: '1 Mar 2023',
+    //   title: '11 TOP useful office software for programmers.'
+    // },
+    // {
+    //   id: 12,
+    //   img_src: img_3,
+    //   category: '12',
+    //   date: '1 Mar 2023',
+    //   title: '12 TOP useful office software for programmers.'
+    // }
   ]
 
-  const list_cards_x3 = [list_cards[2], ...list_cards, ...list_cards, ...list_cards];
+  const width = 0;
 
   const resetPointer = () => {
-    //console.log('end transition');
-    if (pointer === 9) {
-      //console.log('We need to restart');
+    if(pointer === (list_cards.length + 8 - 3)) {
       setTimeout(() => {
-        //console.log('rerendering...');
         setTime(1);
-        setPointer(6);
-      }, 0);
+      }, 10);
       setTime(0);
-      setPointer(5);
-    } else if (pointer === 1) {
-      //console.log('we need to restart');
+      setPointer(5)
+    } else if(pointer === 2) {
       setTimeout(() => {
-        //console.log('rerendering...');
         setTime(1);
-        setPointer(4);
-      }, 0);
+      }, 10);
       setTime(0);
-      setPointer(5);
+      setPointer(list_cards.length + 8 - 3 - 3)
     }
+    
+    // console.log('end transition');
+    // if (pointer === 9) {
+    //   //console.log('We need to restart');
+    //   setTimeout(() => {
+    //     //console.log('rerendering...');
+    //     setTime(1);
+    //     setPointer(6);
+    //   }, 10);
+    //   setTime(0);
+    //   setPointer(5);    
+    // } else if (pointer === 1) {
+    //   //console.log('we need to restart');
+    //   setTimeout(() => {
+    //     //console.log('rerendering...');
+    //     setTime(1);
+    //     setPointer(4);
+    //   }, 10);
+    //   setTime(0);
+    //   setPointer(5); 
+    // }
   }
 
   const handleClickLeft = () => {
     setSt(true);
     setTimeout(() => {
       setSt(false);
-    }, 0);
-    setPointer((pointer) => pointer - 1)
+    }, 1000);
+    setPointer((pointer) => pointer - 1);
+    console.log(pointer);
   }
 
   const handleClickRight = () => {
     setSt(true);
     setTimeout(() => {
       setSt(false);
-    }, 0);
-    setPointer((pointer) => pointer + 1)
-
-    console.log(1);
-    setTimeout(() => {
-      console.log(2);
-    }, 0);
-    console.log(3);
+    }, 1000);
+    setPointer((pointer) => pointer + 1);
+    console.log(pointer);
+    // console.log(1);
+    // setTimeout(() => {
+    //   console.log(2);
+    // }, 1000);
+    // console.log(3);
   }
-
   return (
     <>
       <div className='background'>
@@ -92,11 +174,13 @@ function App() {
       <div className='container'>
         <Title />
 
-        <Slide position={-516 * (pointer - 1)} cb={resetPointer()} time={time}>
+        <Slide position={-516 * (pointer - 1)} cb={()=>resetPointer()} time={time}>
+          {/* <CardItem item={list_cards_x3[0]} w={}/>
+          {list_cards_x3.slice(1).map(item => <CardItem item={item} />)} */}
           {
-            list_cards_x3.map(element =>
-              <div className="cards">
-                {/* <img src={element.img_src} alt="" className="imgs" />
+            list_cards.map((element, index) =>
+              <div className="cards" key={index}>
+                <img src={element.img_src} alt="" className="imgs" />
                 <div className="content">
                   <div className="small-content">
                     {element.category}
@@ -106,10 +190,7 @@ function App() {
                   <div className="big-content">
                     {element.title}
                   </div>
-                </div> */}
-
-                {element.title}
-                
+                </div>
               </div>
             )
           }
